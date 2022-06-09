@@ -1,0 +1,61 @@
+{
+  "name": "puramente-mobile",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "ios:8": "react-native run-ios --simulator 'iPhone ${1:-8}'",
+    "ios:se": "npx react-native run-ios --simulator=\"iPhone SE (2nd generation)\"",
+    "ios:ipad": "npx react-native run-ios --simulator=\"iPad Pro (11-inch) (3rd generation)\"",
+    "ios:emulator:open-shared-meditation": "xcrun simctl openurl booted https://puramente.app.link/FDWJCraD9ib",
+    "ios:emulator:open-shared-course": "xcrun simctl openurl booted https://puramente.app.link/S2MgtNHfkjb",
+    "ios:emulator:open-group-invitation": "xcrun simctl openurl booted https://puramente.app.link/awUACVtfdjb",
+    "ios:emulator:open-plant-a-tree-invitation": "xcrun simctl openurl booted https://puramente.app.link/DvOQfL8v6mb",
+    "pods": "npx pod-install",
+    "start": "react-native start",
+    "start:reset-cache": "react-native start --reset-cache",
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "bundle-visualizer": "npx react-native-bundle-visualizer",
+    "cp-release:ios": "appcenter codepush release-react -a Pura-Mente/Pura-Mente-Ios -p ios/PuraMenteMobile/Info.plist --output-dir build",
+    "cp-release:android": "appcenter codepush release-react -a Pura-Mente/Pura-Mente-Android --output-dir build",
+    "cp-promote:ios": "code-push promote Pura-Mente/Pura-Mente-Ios Staging Production",
+    "cp-promote:android": "code-push promote Pura-Mente/Pura-Mente-Android Staging Production",
+    "cp-history:ios-staging": "code-push deployment history Pura-Mente/Pura-Mente-Ios Staging Staging",
+    "cp-history:android-staging": "code-push deployment history Pura-Mente/Pura-Mente-Android Staging",
+    "cp-history:android-production": "code-push deployment history Pura-Mente/Pura-Mente-Android Production",
+    "cp-history:ios-production": "code-push deployment history Pura-Mente/Pura-Mente-Ios Production",
+    "clean:android": "cd android && ./gradlew clean && cd ..",
+    "bundle:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle",
+    "bundle:ios": "react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ios/main.jsbundle",
+    "bundlejs": "yarn bundle:android && yarn bundle:ios",
+    "android:install": "cd android && ./gradlew installRelease && cd ..",
+    "android:release": "cd android && ./gradlew assembleRelease && cd ..",
+    "bugsnag:release": "sh ./scripts/bugsnag_release.sh"
+  },
+  "dependencies": {
+    "react": "17.0.1",
+    "react-native": "0.65.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/plugin-syntax-typescript": "^7.12.13",
+    "@babel/runtime": "7.14.0",
+    "@testing-library/react-native": "^9.1.0",
+    "@types/react": "^18.0.12",
+    "babel-jest": "^27",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "jest": "^27",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-test-renderer": "17.0.1",
+    "ts-jest": "^27",
+    "tsconfig-paths-jest": "^0.0.1",
+    "typescript": "^4.1.2"
+  },
+  "resolutions": {
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0"
+  }
+}
